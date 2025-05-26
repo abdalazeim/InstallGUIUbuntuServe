@@ -1,34 +1,31 @@
-# How To Install Webmin on Ubuntu Server
+# How to Install a GUI on Ubuntu Server: Step-by-Step Guide
 
-### Introduction
-### Webmin is a modern web control panel that allows you to administer your Linux server through a browser-based interface. With Webmin, you can manage user accounts, configure DNS 
-### settings, and change settings for common packages on the fly.
-### In this tutorial, you’ll install and configure Webmin on your server and secure access to the interface with a valid certificate from Let’s Encrypt. You’ll then use Webmin to ### add new user accounts, and update all packages on your server from the dashboard.
-## Step  — Installing Webmin
-## 1. First, update your server’s package index if you’ve not done so recently:
+### Prerequisites
+### Before proceeding with the installation, ensure that you have the following:
+### 1- The latest Ubuntu Server installed.
+### 2- A user account with sudo privileges.
+### 3- An active internet connection..
+### Installing a graphical user interface (GUI) on the Ubuntu server
+## 1. Step 1: Update your system
 #  sudo apt update && sudo apt upgrade
-## 2. Add Webmin Repository
-# sudo apt install software-properties-common apt-transport-https
-## 3. Add Webmin's GPG key with the following command:
-# wget -qO- https://download.webmin.com/jcameron-key.asc | sudo tee -a /etc/apt/trusted.gpg.d/jcameron-key.asc
-## 4. Enable the Webmin repository path and add it to your Ubuntu distribution with the following command:
-# sudo add-apt-repository "deb [arch=amd64] http://download.webmin.com/download/repository sarge contrib"
-## 5. Install Webmin
-# sudo apt install webmin
-## 6. Checking the status of Webmin as a service in the system
-# sudo systemctl status webmin
-## 7. Set up firewall and specify TCP port 10000
-# sudo ufw allow 10000/tcp
-## Adding a Valid Certificate with Let’s Encrypt
-## Webmin is already configured to use HTTPS, but it uses a self-signed, untrusted certificate. Let’s replace it with a valid certificate from Let’s Encrypt.
-## cNavigate to https://your_domain:10000 in your web browser, replacing your_domain with the domain name pointing to your server’s IP address.
-# https://localhost:10000/
+## 2. Step 2: Install the desktop environment
+# sudo apt install ubuntu-desktop -y
+## 3. Installing Xfce the following command:
+# sudo apt install xubuntu-core -y
+## 4. Installing other desktopsn with the following command:
+# sudo apt install lubuntu-core -y
+# sudo apt install kubuntu-desktop -y
+## 5. IInstall a display manager
+# sudo apt install lightdm -y
+## 6. Enable GUI to start automatically
+# systemctl get-default
+## 7. By default, it should return multi-user.target, which is the non-graphical mode. To switch to graphical mode, run:
+# sudo systemctl set-default graphical.target
+## 8.Reboot the system
+## sudo reboot
 
 
 
-- **ScrennShot**:
-
-     ![ScrennShot](https://github.com/abdalazeim/WebminUbuntuServer/blob/main/Webmi.png)
 
 
 
